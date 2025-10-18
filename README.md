@@ -65,11 +65,6 @@ System: Ubuntu 24.04 LTS
 ✅ SSH authentication with GitHub is working.
 ```
 
----
 
-## Author
-
-**Murilo Cardoso**  
-Learning DevOps fundamentals through transparent, reproducible scripting.
 
 
