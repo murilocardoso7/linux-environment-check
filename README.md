@@ -67,25 +67,6 @@ System: Ubuntu 24.04 LTS
 
 ---
 
-## 5. What This Demonstrates
-
-| Skill | Description |
-|-------|--------------|
-| Linux basics | Safe use of shell commands and automation |
-| Git setup | Proper global configuration and verification |
-| SSH usage | Understanding secure authentication with GitHub |
-| Scripting practice | Writing a single, clear, multi-step Bash script |
-
----
-
-## 6. Notes
-
-- The script is **fully transparent and self-contained**, using only standard Linux tools (`apt`, `git`, `ssh`).  
-- It is **not a production automation**, but a **technical foundation** to build confidence in DevOps environments.  
-- The goal is **reproducibility and correctness**, not complexity.  
-
----
-
 ## Author
 
 **Murilo Cardoso**  
