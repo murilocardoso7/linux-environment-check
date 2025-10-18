@@ -1,7 +1,7 @@
 # DevOps Environment Setup & Validation Script
 
 This repository contains a single Bash script that **configures and validates a DevOps-ready Linux environment**.  
-It automates initial setup steps — installing Git, configuring user information, and testing SSH authentication with GitHub — while verifying that everything is working as expected.
+It automates initial setup steps: installing Git, configuring user information, and testing SSH authentication with GitHub, while verifying that everything is working as expected.
 
 ---
 
@@ -28,8 +28,8 @@ It helps ensure your local setup is properly configured before working with auto
 ```
 📁 devops-environment/
 │
-├── devops-setup.bash     # Single script: setup + validation
-└── README.md              # Project documentation
+├── devops-setup.bash     
+└── README.md              
 ```
 
 ---
@@ -91,6 +91,4 @@ System: Ubuntu 24.04 LTS
 **Murilo Cardoso**  
 Learning DevOps fundamentals through transparent, reproducible scripting.
 
----
 
-> This repository is part of a personal DevOps learning path, emphasizing real technical understanding over appearance or abstraction.
