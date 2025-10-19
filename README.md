@@ -1,70 +1,41 @@
-# DevOps Environment Setup & Validation Script
+# 🧭 Script de Configuração e Validação de Ambiente Linux
 
-This repository contains a single Bash script that **configures and validates a DevOps-ready Linux environment**.  
-It automates initial setup steps: installing Git, configuring user information, and testing SSH authentication with GitHub, while verifying that everything is working as expected.
+Este repositório apresenta um script Bash que realiza a configuração inicial e a checagem de integridade de um ambiente Linux.
+Ele automatiza tarefas como atualização do sistema, instalação do Git e verificação de acesso SSH ao GitHub, garantindo que tudo esteja pronto para uso técnico.
 
----
-
-## 1. Purpose
-
-This project provides a **clean and reproducible environment check** for beginners in DevOps.  
-It helps ensure your local setup is properly configured before working with automation tools such as Docker, CI/CD pipelines, or Infrastructure as Code.
+O objetivo é oferecer uma verificação rápida e padronizada, ideal para estudantes e profissionais que desejam confirmar se o ambiente está preparado.
 
 ---
 
-## 2. Features
+## ⚙️ Funcionalidades
 
-- Updates and upgrades system packages  
-- Installs and configures Git  
-- Displays configured Git username and email  
-- Checks operating system version  
-- Validates SSH authentication with GitHub  
-- Produces readable diagnostic output for quick verification  
-
----
-
-## 3. Repository Structure
-
-```
-📁 devops-environment/
-│
-├── devops-setup.bash     
-└── README.md              
-```
+* Atualiza os pacotes do sistema operacional
+* Instala e configura o Git
+* Exibe as informações do usuário Git configurado
+* Verifica a versão do sistema operacional
+* Testa a autenticação SSH com o GitHub
+* Exibe mensagens de diagnóstico claras e objetivas
 
 ---
 
-## 4. Usage
 
-Make the script executable:
-```bash
-chmod +x devops-setup.bash
+
+## 🧾 Exemplo de Saída
+
 ```
+🔹 Atualizando pacotes do sistema...
+🔹 Instalando Git...
+🔹 Configurando Git...
+✅ Configuração concluída. Seu ambiente está pronto!
 
-Run the script:
-```bash
-./devops-setup.bash
+🔹 Verificando sistema operacional...
+Sistema: Ubuntu 24.04 LTS
+
+🔹 Verificando configuração do Git...
+✅ Configuração detectada:
+   Nome:  João Dev
+   E-mail: joao.dev@example.com
+
+🔹 Testando autenticação SSH com o GitHub...
+✅ Conexão SSH com GitHub verificada com sucesso.
 ```
-
-Expected output example:
-```
-🔹 Updating system packages...
-🔹 Installing Git...
-🔹 Configuring Git...
-✅ Setup complete. Your environment is ready!
-
-🔹 Checking operating system...
-System: Ubuntu 24.04 LTS
-
-🔹 Checking Git configuration...
-✅ Git user configuration detected:
-   Name:  Example
-   Email: example@example.com
-
-🔹 Testing SSH authentication with GitHub...
-✅ SSH authentication with GitHub is working.
-```
-
-
-
-
