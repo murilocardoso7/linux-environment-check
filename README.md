@@ -1,41 +1,63 @@
-# 🧭 Linux Environment Check
+🧭 Linux Environment Check
 
-Script Bash para configuração inicial e verificação de integridade de um ambiente Linux.
-Ele automatiza tarefas como atualização do sistema, instalação do Git e teste de conexão SSH com o GitHub, garantindo que tudo esteja pronto para uso técnico.
+Script em Bash criado para automatizar a configuração inicial e a checagem básica de um ambiente Linux.
+Ele atualiza o sistema, instala dependências, configura o Git e testa a conexão SSH com o GitHub, ajudando a garantir que o ambiente esteja pronto para uso técnico.
 
-O objetivo é oferecer uma verificação rápida e padronizada, ideal para estudantes e profissionais que desejam confirmar se o ambiente está preparado.
+O foco é praticidade e padronização, especialmente útil para quem está montando um ambiente de estudos, trabalho remoto ou iniciando em DevOps.
 
----
+⚙️ Funcionalidades
 
-## ⚙️ Funcionalidades
+Atualiza pacotes do sistema operacional
 
-* Atualiza os pacotes do sistema operacional
-* Instala e configura o Git
-* Exibe as informações do usuário Git configurado
-* Verifica a versão do sistema operacional
-* Testa a autenticação SSH com o GitHub
-* Exibe mensagens de diagnóstico claras e objetivas
+Verifica e instala dependências essenciais (git, ssh, curl)
 
----
+Configura o Git globalmente (nome e e-mail)
 
+Exibe a versão do sistema operacional
 
+Testa a autenticação SSH com o GitHub
 
-## 🧾 Exemplo de Saída
+Exibe mensagens coloridas de diagnóstico
 
-```
+Salva o log completo da execução (~/environment_check.log)
+
+🧾 Exemplo de saída
+===============================================
+🧭 Iniciando verificação do ambiente Linux
+===============================================
+
+🔹 Verificando dependências básicas...
+✅ git encontrado.
+✅ ssh encontrado.
+✅ curl encontrado.
+
 🔹 Atualizando pacotes do sistema...
-🔹 Instalando Git...
-🔹 Configurando Git...
-✅ Configuração concluída. Seu ambiente está pronto!
+✅ Pacotes atualizados.
+
+🔹 Configurando Git global...
+✅ Git configurado com sucesso.
 
 🔹 Verificando sistema operacional...
-Sistema: Ubuntu 24.04 LTS
+✅ Sistema detectado: Ubuntu 24.04 LTS
 
-🔹 Verificando configuração do Git...
-✅ Configuração detectada:
-   Nome:  João Dev
-   E-mail: joao.dev@example.com
-
-🔹 Testando autenticação SSH com o GitHub...
+🔹 Testando autenticação SSH com GitHub...
 ✅ Conexão SSH com GitHub verificada com sucesso.
-```
+
+===============================================
+✅ Verificação concluída.
+🔹 Log completo salvo em: /home/usuario/environment_check.log
+===============================================
+
+💾 Como usar
+# 1. Baixe o script
+git clone https://github.com/seuusuario/linux-environment-check.git
+cd linux-environment-check
+
+# 2. Dê permissão de execução
+chmod +x environment_check.sh
+
+# 3. Execute
+./environment_check.sh
+
+
+O script solicitará o nome e o e-mail do Git apenas se ainda não estiverem configurados globalmente.
