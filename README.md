@@ -1,7 +1,7 @@
-# 🧭 Script de Configuração e Validação de Ambiente Linux
+# 🧭 Linux Environment Check
 
-Este repositório apresenta um script Bash que realiza a configuração inicial e a checagem de integridade de um ambiente Linux.
-Ele automatiza tarefas como atualização do sistema, instalação do Git e verificação de acesso SSH ao GitHub, garantindo que tudo esteja pronto para uso técnico.
+Script Bash para configuração inicial e verificação de integridade de um ambiente Linux.
+Ele automatiza tarefas como atualização do sistema, instalação do Git e teste de conexão SSH com o GitHub, garantindo que tudo esteja pronto para uso técnico.
 
 O objetivo é oferecer uma verificação rápida e padronizada, ideal para estudantes e profissionais que desejam confirmar se o ambiente está preparado.
 
