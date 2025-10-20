@@ -1,63 +1,76 @@
-🧭 Linux Environment Check
+#!/bin/bash
 
-Script em Bash criado para automatizar a configuração inicial e a checagem básica de um ambiente Linux.
-Ele atualiza o sistema, instala dependências, configura o Git e testa a conexão SSH com o GitHub, ajudando a garantir que o ambiente esteja pronto para uso técnico.
+# ===============================================
+# 🧭 Linux Environment Check
+# Script de verificação e configuração inicial do ambiente Linux.
+# Autor: Murilo Cardoso
+# ===============================================
 
-O foco é praticidade e padronização, especialmente útil para quem está montando um ambiente de estudos, trabalho remoto ou iniciando em DevOps.
+LOG_FILE="$HOME/environment_check.log"
 
-⚙️ Funcionalidades
+# ---------- Funções utilitárias ----------
+log() {
+  echo -e "$1" | tee -a "$LOG_FILE"
+}
 
-Atualiza pacotes do sistema operacional
+check_command() {
+  command -v "$1" >/dev/null 2>&1
+}
 
-Verifica e instala dependências essenciais (git, ssh, curl)
+ok()   { echo -e "\e[32m✅ $1\e[0m" | tee -a "$LOG_FILE"; }
+info() { echo -e "\e[34m🔹 $1\e[0m" | tee -a "$LOG_FILE"; }
+warn() { echo -e "\e[33m⚠️ $1\e[0m" | tee -a "$LOG_FILE"; }
+fail() { echo -e "\e[31m❌ $1\e[0m" | tee -a "$LOG_FILE"; exit 1; }
 
-Configura o Git globalmente (nome e e-mail)
+# ---------- Cabeçalho ----------
+echo "===============================================" | tee "$LOG_FILE"
+echo "🧭 Iniciando verificação do ambiente Linux" | tee -a "$LOG_FILE"
+echo "===============================================" | tee -a "$LOG_FILE"
 
-Exibe a versão do sistema operacional
+# ---------- Verificação de dependências ----------
+info "Verificando dependências básicas..."
+for dep in git ssh curl; do
+  if check_command "$dep"; then
+    ok "$dep encontrado."
+  else
+    warn "$dep não encontrado. Tentando instalar..."
+    sudo apt-get install -y "$dep" || fail "Falha ao instalar $dep"
+  fi
+done
 
-Testa a autenticação SSH com o GitHub
+# ---------- Atualização do sistema ----------
+info "Atualizando pacotes do sistema..."
+sudo apt-get update -y && sudo apt-get upgrade -y && ok "Pacotes atualizados."
 
-Exibe mensagens coloridas de diagnóstico
+# ---------- Configuração do Git ----------
+if ! git config --global user.name >/dev/null; then
+  info "Configurando Git global..."
+  read -rp "Digite seu nome: " git_name
+  read -rp "Digite seu e-mail: " git_email
+  git config --global user.name "$git_name"
+  git config --global user.email "$git_email"
+  ok "Git configurado com sucesso."
+else
+  ok "Git já está configurado."
+fi
 
-Salva o log completo da execução (~/environment_check.log)
+# ---------- Verificação do sistema ----------
+info "Verificando sistema operacional..."
+OS=$(lsb_release -d | cut -f2)
+ok "Sistema detectado: $OS"
 
-🧾 Exemplo de saída
-===============================================
-🧭 Iniciando verificação do ambiente Linux
-===============================================
+# ---------- Teste SSH com GitHub ----------
+info "Testando autenticação SSH com GitHub..."
+ssh -T git@github.com -o StrictHostKeyChecking=no 2>&1 | tee -a "$LOG_FILE"
+if [ "${PIPESTATUS[0]}" -eq 1 ]; then
+  ok "Conexão SSH com GitHub verificada com sucesso."
+else
+  warn "Não foi possível verificar a conexão SSH."
+fi
 
-🔹 Verificando dependências básicas...
-✅ git encontrado.
-✅ ssh encontrado.
-✅ curl encontrado.
-
-🔹 Atualizando pacotes do sistema...
-✅ Pacotes atualizados.
-
-🔹 Configurando Git global...
-✅ Git configurado com sucesso.
-
-🔹 Verificando sistema operacional...
-✅ Sistema detectado: Ubuntu 24.04 LTS
-
-🔹 Testando autenticação SSH com GitHub...
-✅ Conexão SSH com GitHub verificada com sucesso.
-
-===============================================
-✅ Verificação concluída.
-🔹 Log completo salvo em: /home/usuario/environment_check.log
-===============================================
-
-💾 Como usar
-# 1. Baixe o script
-git clone https://github.com/seuusuario/linux-environment-check.git
-cd linux-environment-check
-
-# 2. Dê permissão de execução
-chmod +x environment_check.sh
-
-# 3. Execute
-./environment_check.sh
-
-
-O script solicitará o nome e o e-mail do Git apenas se ainda não estiverem configurados globalmente.
+# ---------- Relatório final ----------
+echo
+echo "===============================================" | tee -a "$LOG_FILE"
+ok "✅ Verificação concluída."
+info "Log completo salvo em: $LOG_FILE"
+echo "===============================================" | tee -a "$LOG_FILE"
